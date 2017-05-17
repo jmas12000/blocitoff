@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+ # include ActiveModel::ForbiddenAttributesProtection 
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  before_save { self.email = email.downcase if email.present? }

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
      
      resources :users, only: [:new, :create, :show]
+     resource :users, only: [:edit] do
+       #collection do
+       #patch 'update_password'
+       patch 'update_password', on: :collection
+       get 'edit_password', on: :member
+       
+     end
      resources :sessions, only: [:new, :create, :destroy]
      devise_for :users
     

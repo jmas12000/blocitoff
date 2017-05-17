@@ -1,3 +1,5 @@
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,6 +12,32 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ body {
+  background-color: #f5f5f5;
+}
+
+
+.nav {
+  background-color: #ededed;
+  box-shadow: 0px 0px 20px #c1e5e5;
+  background: linear-gradient(#f5f5f5, #e1e1e1, #f5f5f5);
+  border-bottom: none;
+}
+li {
+    list-style-type: none;
+}
+
+h1 {
+  color: rgba(200,120,45,.9);
+  text-shadow: 2px 0px 1px #000000;
+  padding: 0px 0px 35px 0px;
+}
+
+blockquote {
+  color: #003000;
+}

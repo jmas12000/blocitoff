@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Workspace</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Blocitoff", root_path %></li>
-     <div class="pull-right user-info">
-        <% if current_user %>
-          <%= image_tag current_user.avatar_url(48), class: "gravatar" %>
-          <div class="pull-right">
-            <%= link_to current_user.email, user_path(current_user) %> <br/> <%= link_to "Sign Out", session_path(current_user), method: :delete %>
-          </div>
-        <% else %>
-          <%= link_to "Sign In", new_session_path %> or
-          <%= link_to "Sign Up", new_user_path %>
-        <% end %>
+  <head>
+    <title>Blocitoff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+   
+  </head>
+  <body>
+    <div class="container-fluid navbar">
+      <div class= "row">
+        <ul class="nav nav-tabs pull-left col-xs-12">
+          <li><%= link_to "Home", root_path %></li>
+        
+          <% if user_signed_in? %> 
+            <li class= "pull-right"><%= link_to "Sign Out", session_path(current_user), method: :delete, :class => 'navbar-link' %></li>
+          <% else %>
+            <li class= "pull-right"><%= link_to "Sign Up",  new_user_path, :class => 'navbar-link'  %></li> 
+            <li class= "pull-right"><%= link_to "Sign In", new_session_path, :class => 'navbar-link'  %></li> 
+        
+          <% end %>
+        </ul>
+        <div class= "text-right">
+          <% if user_signed_in? %>
+            <h5 class= "text-right"><small>Signed in as: </small><strong><%= current_user.name %></strong></h5>
+          <% end %>
+        </div>
       </div>
-    </ul>
+    </div>
     <% if flash[:notice] %>
       <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -32,8 +39,8 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= flash[:alert] %>
       </div>
-    <% end %>
-    <%= yield %>
-  </div>
-</body>
+    <% end %>  
+    <%= yield %> 
+  </body>
 </html>
+
