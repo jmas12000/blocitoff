@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
      
-     resources :users, only: [:new, :create, :show]
-     resource :users, only: [:edit] do
-       #collection do
-       #patch 'update_password'
-       patch 'update_password', on: :collection
-       get 'edit_password', on: :member
-       
-     end
-     resources :sessions, only: [:new, :create, :destroy]
-     devise_for :users
+  resources :users, only: [:new, :create, :show]
+  
+  resources :users, only: [:edit] do
+    patch 'update_password', on: :collection
+    get 'edit_password', on: :member  
+  end
+     
+  resources :users, only: [] do
+    resources :items, only: [:new,:create, :destroy]
+  end
+     
+  resources :sessions, only: [:new, :create, :destroy]
+  devise_for :users
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

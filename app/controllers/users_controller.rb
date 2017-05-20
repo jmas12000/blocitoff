@@ -31,13 +31,11 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(current_user.id)
+   
     if @user.update(user_params)
-     #sign_in @user, :bypass => true 
-      # Sign in the user by passing validation in case their password changed
       bypass_sign_in(@user)
-     redirect_to root_path
+      redirect_to root_path
     else
-      
       render "edit_password"
     end
   end
@@ -45,7 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    # NOTE: Using `strong_parameters` gem
     params.require(:user).permit(:password, :password_confirmation, :current_password)
   end
 end

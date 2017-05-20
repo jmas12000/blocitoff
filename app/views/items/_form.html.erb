@@ -1,0 +1,7 @@
+<%= form_for [user,item] do |f| %>
+  <div class="form-group">
+    <%= f.label :body, class: 'sr-only' %>
+    <%= f.text_field :body, class: 'form-control', placeholder: "Enter a new item" %>
+  </div>
+  <%= f.submit "Submit item", class: 'btn btn-default pull-right' %>
+<% end %>

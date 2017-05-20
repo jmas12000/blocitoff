@@ -6,21 +6,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-   
   </head>
   <body>
     <div class="container-fluid navbar">
       <div class= "row">
         <ul class="nav nav-tabs pull-left col-xs-12">
           <li><%= link_to "Home", root_path %></li>
-        
           <% if user_signed_in? %> 
             <li class= "pull-right"><%= link_to "Sign Out", session_path(current_user), method: :delete, :class => 'navbar-link' %></li>
             <li class= "avatar pull-right"><%= image_tag current_user.avatar_url(28) %></li>
           <% else %>
             <li class= "pull-right"><%= link_to "Sign Up",  new_user_path, :class => 'navbar-link'  %></li> 
             <li class= "pull-right"><%= link_to "Sign In", new_session_path, :class => 'navbar-link'  %></li> 
-        
           <% end %>
         </ul>
         <div class= "text-right">

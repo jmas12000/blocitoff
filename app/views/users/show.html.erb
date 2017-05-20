@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <div class="media">
       <% if user_signed_in? %> 
-      <% avatar_url = @user.avatar_url(128) %>
+        <% avatar_url = @user.avatar_url(128) %>
         <% if avatar_url %>
           <div class="media-right">
             <%= image_tag avatar_url, class: 'media-object' %>
@@ -13,35 +13,49 @@
           <h2 class="media-heading"><%= @user.name %></h2>
           <h2 class="media-heading"><%= @user.email %></h2>
         </div>
-     <%else%>
-       <div class="jumbotron">
-         <h1 class= "title text-center">Blocitoff</h1>
-         <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p>
-         <p class= "text-center">
-           <%= link_to "Sign In", new_session_path %> or
-           <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> today!
-         </p> 
-       </div>
-       <div class="jumbotron">
-         <h1 class= "text-center">Blocitoff</h1>
-         <p class= "text-center">Welcome back to Blocitoff!</p>
-         <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p> 
-       </div>
-       <div class="row">
-         <div class="col-md-4">
-           <h2>The Purpose</h2>
-           <p>To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put off.</p>
-         </div>
-         <div class="col-md-4">
-           <h2>The Goal</h2>
-           <p> To address the problem of to-do list clutter.</p>
-         </div>
-         <div class="col-md-4">
-           <h2>The Solution</h2>
-           <p>Blocitoff will aim to keep to-do lists manageable by automatically deleting to-do items that have not been completed after seven days. The hypothesis is that if the to-do item is not important enough to be completed in seven days, it doesn't belong on your to-do list.</p>
-         </div>
-       </div>
-     <%end%>
-   </div>
+        <div>
+          <h3>To-Do Items</h3>
+          <% @user.items.each do |item| %>
+            <div class="media">
+              <h4><b><%=item.body %></b></h4> 
+              <small>
+              submitted <%= time_ago_in_words(item.created_at) %> ago <br>
+              </small>
+            </div>
+          <% end %>
+          <%= pluralize(@user.items.count, "item") %> 
+          <div class="col-md-4">
+            <%= render 'items/form', item: Item.new, user: @user %>
+          </div>
+      <% else %>
+        <div class="jumbotron">
+          <h1 class= "title text-center">Blocitoff</h1>
+          <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p>
+          <p class= "text-center">
+            <%= link_to "Sign In", new_session_path %> or
+            <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> today!
+          </p> 
+        </div>
+        <div class="jumbotron">
+          <h1 class= "text-center">Blocitoff</h1>
+          <p class= "text-center">Welcome back to Blocitoff!</p>
+          <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p> 
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h2>The Purpose</h2>
+            <p>To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put off.</p>
+          </div>
+          <div class="col-md-4">
+            <h2>The Goal</h2>
+            <p> To address the problem of to-do list clutter.</p>
+          </div>
+          <div class="col-md-4">
+            <h2>The Solution</h2>
+            <p>Blocitoff will aim to keep to-do lists manageable by automatically deleting to-do items that have not been completed after seven days. The hypothesis is that if the to-do item is not important enough to be completed in seven days, it doesn't belong on your to-do list.</p>
+          </div>
+        </div>
+      <%end%>
+    </div>
   </div>
 </div>

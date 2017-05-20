@@ -1,0 +1,9 @@
+<% if @items %>
+  <% @user.items.each do |item| %>
+    <div class="media">
+      <div class="media-body">
+        <%= item.body %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
