@@ -2,7 +2,7 @@
   <div class="media">
     <h4 id="item-<%= item.id%>"><b><%= index + 1 %>) <%=item.body %></b>    <%= link_to "",user_item_path( @user.id, item.id ), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %><br> 
     <small>
-      submitted <%= time_ago_in_words(item.created_at) %> ago <br>
+     <i><b><%= "#{ distance_of_time_in_words(item.created_at + 7.days, Time.now)}" %> left to complete task</b></i> <br>
     </small>
     </h4>
   </div>
