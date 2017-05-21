@@ -1,9 +1,9 @@
-<% if @items %>
-  <% @user.items.each do |item| %>
-    <div class="media">
-      <div class="media-body">
-        <%= item.body %>
-      </div>
-    </div>
-  <% end %>
+<% @user.items.each_with_index do |item, index| %>
+  <div class="media">
+    <h4 id="item-<%= item.id%>"><b><%= index + 1 %>) <%=item.body %></b>    <%= link_to "",user_item_path( @user.id, item.id ), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %><br> 
+    <small>
+      submitted <%= time_ago_in_words(item.created_at) %> ago <br>
+    </small>
+    </h4>
+  </div>
 <% end %>

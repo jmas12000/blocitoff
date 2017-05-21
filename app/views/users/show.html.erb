@@ -14,16 +14,9 @@
           <h2 class="media-heading"><%= @user.email %></h2>
         </div>
         <div>
-          <h3>To-Do Items</h3>
-          <% @user.items.each do |item| %>
-            <div class="media">
-              <h4><b><%=item.body %></b></h4> 
-              <small>
-              submitted <%= time_ago_in_words(item.created_at) %> ago <br>
-              </small>
-            </div>
-          <% end %>
-          <%= pluralize(@user.items.count, "item") %> 
+          <h3>To-Do Items:</h3>
+          <%= render 'items/item'%>
+         <br>
           <div class="col-md-4">
             <%= render 'items/form', item: Item.new, user: @user %>
           </div>
@@ -58,4 +51,5 @@
       <%end%>
     </div>
   </div>
+</div>
 </div>
