@@ -1,40 +1,37 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="media">
-      <% if user_signed_in? %> 
-        <% avatar_url = @user.avatar_url(128) %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="media center">
+      <% if user_signed_in? %>
+        <% avatar_url = @user.avatar_url(250) %>
         <% if avatar_url %>
-          <div class="media-right">
-            <%= image_tag avatar_url, class: 'media-object' %>
-          </div> 
+          <div class="avatar-container">
+            <div class = "avatar-image" >
+              <%= image_tag avatar_url, class: 'media-object' %>
+            </div>
+          </div>
         <% end %>
         <br>
         <div class="media-body">
-          <h2 class="media-heading"><%= @user.name %></h2>
           <h2 class="media-heading"><%= @user.email %></h2>
         </div>
         <div>
           <h3>To-Do Items:</h3>
-          <%= render 'items/item'%>
-         <br>
-          <div class="col-md-4">
-            <%= render 'items/form', item: Item.new, user: @user %>
+          <%= render "items/item" %>
+          <br>
+          <div class="form-container col-md-10">
+            <%= render partial:'items/form', locals: {user: @user, item: @item} %>
           </div>
+        </div>
       <% else %>
         <div class="jumbotron">
           <h1 class= "title text-center">Blocitoff</h1>
           <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p>
           <p class= "text-center">
-            <%= link_to "Sign In", new_session_path %> or
-            <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> today!
-          </p> 
+            <%= link_to "Sign In", new_user_session_path %> or
+            <%= link_to "Sign Up",new_user_registration_path, class: 'btn btn-primary' %> today!
+          </p>
         </div>
-        <div class="jumbotron">
-          <h1 class= "text-center">Blocitoff</h1>
-          <p class= "text-center">Welcome back to Blocitoff!</p>
-          <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p> 
-        </div>
-        <div class="row">
+        <div class="row mission">
           <div class="col-md-4">
             <h2>The Purpose</h2>
             <p>To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put off.</p>
@@ -51,5 +48,4 @@
       <%end%>
     </div>
   </div>
-</div>
 </div>

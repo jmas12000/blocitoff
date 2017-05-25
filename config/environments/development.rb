@@ -20,13 +20,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost:3000" }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-  :user_name => '9ba75febe80372',
-  :password => 'f16cbf6039e654',
-  :address => 'smtp.mailtrap.io',
-  :domain => 'smtp.mailtrap.io',
-  :port => '2525',
-  :authentication => :cram_md5
-}
+    :user_name => ENV['user_name'],
+    :password => ENV['password'],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

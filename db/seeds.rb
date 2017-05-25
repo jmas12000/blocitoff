@@ -6,7 +6,7 @@
     email: Faker::Internet.unique.email,
     password: Faker::Internet.password,
     name: Faker::Name.name
-    )
+  )
 end
 
 users = User.all
@@ -15,7 +15,7 @@ users = User.all
   Item.create!(
     user: users.sample,
     body: Faker::Lorem.sentence
-    )
+  )
 end
 
 

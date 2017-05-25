@@ -1,21 +1,19 @@
 class ItemsController < ApplicationController
+  
   def new
     @item = Item.new
   end
     
   def create
-    @user = User.find(params[:user_id])
-    item = @user.items.new(item_params)
-    item.user = current_user
-      
+    item = current_user.items.new(item_params)
     if item.save
       flash[:notice] = "Item saved successfully."
     redirect_to root_path
     else
       flash[:alert] = "Item failed to save."
       redirect_to root_path
-    end
-  end
+    end 
+  end 
   
   def destroy
     @user = User.find(params[:user_id])
@@ -25,16 +23,15 @@ class ItemsController < ApplicationController
     else
       flash[:alert] = "Item couldn't be deleted successfully. Please try again."
     end
-  end
-
+   
     respond_to do |format|
       format.html
-      format.js {}
+      format.js
     end
-   
- 
+  end
   
   private
+  
   def item_params
     params.require(:item).permit(:body)
   end
