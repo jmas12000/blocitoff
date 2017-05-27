@@ -2,8 +2,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-  
- 
+
+
 body {
   background-color: #000;
 }
@@ -15,7 +15,7 @@ body {
 .nav {
   background-color: #ededed;
   box-shadow: 0px 0px 20px #c1e5e5;
-  background: linear-gradient(#f5f5f5, #e1e1e1, #f5f5f5); 
+  background: linear-gradient(#f5f5f5, #e1e1e1, #f5f5f5);
   border-bottom: none;
 }
 
@@ -75,17 +75,16 @@ blockquote {
   float: left;
 }
 
-.submit {
-  margin-right: -105px;
-  margin-bottom: 35px;  
-}
-
 .text {
   margin-top: 15px;
 }
 
+input[type='text'] {
+  height: 2.1rem;
+}
+
 .alert-error {
-  background-color: #f2dede; 
+  background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
   text-align: left;
@@ -111,16 +110,16 @@ blockquote {
   color: #468847;
   text-align: left;
 }
-  
+
 .form-container {
   width: 50%;
   margin: 0 25%;
 }
-  
+
 .mission {
   color: white;
 }
- 
+
 .white {
   color: white;
 }
