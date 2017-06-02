@@ -5,7 +5,8 @@
   User.create!(
     email: Faker::Internet.unique.email,
     password: Faker::Internet.password,
-    name: Faker::Name.name
+    name: Faker::Name.name,
+    confirmed_at: Time.now
   )
 end
 

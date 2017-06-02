@@ -1,9 +1,9 @@
 <% @items.each_with_index do |item, index| %>
   <div class="media text-success">
-    <h3 class= "number", id="item-<%= item.id%>"><b><%= index + 1 %>) <span class= "text-success"><%=item.body %></span></b>    <%= link_to "",[item.user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true %><br> 
+    <h3 class="number", id="item-<%=item.id%>"><b><%=index + 1 %>) <span class="text-success"><%=item.body%></span></b>    <%= link_to "",[item.user, item], method: :delete, class:'glyphicon glyphicon-ok', remote: true %><br> 
       <small>
-        <i class= "text-warning"><b><%= remaining_time(item) %> left to complete task</b></i> <br>
+        <i class="text-warning"><b><%=remaining_time(item)%> left to complete task</b></i> <br>
       </small>
     </h3>
   </div>
-<% end %>
+<% end %> 

@@ -1,34 +1,34 @@
 <div class="container-fluid">
   <div class="row">
     <div class="media center">
-      <% if user_signed_in? %>
-        <% avatar_url = @user.avatar_url(250) %>
-        <% if avatar_url %>
+      <%if user_signed_in?%>
+        <%avatar_url=@user.avatar_url(250)%>
+        <%if avatar_url%>
           <div class="avatar-container">
-            <div class = "avatar-image" >
-              <%= image_tag avatar_url, class: 'media-object' %>
+            <div class="avatar-image">
+              <%=image_tag avatar_url, class:'media-object'%>
             </div>
           </div>
-        <% end %>
+        <%end%>
         <br>
         <div class="media-body">
-          <h2 class="media-heading"><%= @user.email %></h2>
+          <h2 class="media-heading"><%=@user.email%></h2>
         </div>
         <div>
           <h3>To-Do Items:</h3>
-          <%= render "items/item" %>
+          <%=render "items/item"%>
           <br>
           <div class="form-container col-md-10">
-            <%= render partial:'items/form', locals: {user: @user, item: @item} %>
+            <%=render partial:'items/form', locals: {user: @user, item: @item}%>
           </div>
         </div>
-      <% else %>
+      <%else%>
         <div class="jumbotron">
-          <h1 class= "title text-center">Blocitoff</h1>
-          <p class= "text-center">Blocitoff is a site built to keep to-do lists manageable</p>
-          <p class= "text-center">
-            <%= link_to "Sign In", new_user_session_path %> or
-            <%= link_to "Sign Up",new_user_registration_path, class: 'btn btn-primary' %> today!
+          <h1 class="title text-center">Blocitoff</h1>
+          <p class="text-center">Blocitoff is a site built to keep to-do lists manageable</p>
+          <p class="text-center">
+            <%=link_to "Sign In", new_user_session_path%> or
+            <%=link_to "Sign Up",new_user_registration_path, class:'btn btn-primary'%> today!
           </p>
         </div>
         <div class="row mission">
@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-4">
             <h2>The Goal</h2>
-            <p> To address the problem of to-do list clutter.</p>
+            <p>To address the problem of to-do list clutter.</p>
           </div>
           <div class="col-md-4">
             <h2>The Solution</h2>

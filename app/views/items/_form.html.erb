@@ -1,9 +1,9 @@
-<%= form_for [current_user,@item] do |f| %>
-  <div class= "container-fluid text-input">
+<%=form_for [current_user,@item] do |f|%>
+  <div class="container-fluid text-input">
     <div class="form-group">
-      <%= f.label :body, class: 'sr-only' %>
-      <%= f.text_field :body, class: 'form-control text', placeholder: "Enter a new item" %>
+      <%=f.label :body, class: 'sr-only'%>
+      <%=f.text_field :body, class: 'form-control text', placeholder: "Enter a new item"%>
     </div>
-    <p class= "text-warning submit"><%= f.submit "Submit item", class: 'btn btn-success pull-right text-warning' %>
+    <p class="text-warning submit"><%=f.submit "Submit item", class:'btn btn-success pull-right text-warning'%>
   </div>
-<% end %>
+<%end%>

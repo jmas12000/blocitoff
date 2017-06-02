@@ -75,7 +75,16 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   config.action_mailer.default_url_options = { host: 'lit-garden-73435.herokuapp.com' } 
-
+  ActionMailer::Base.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    domain:               'heroku.com',
+    user_name:            ENV["SENDGRID_USERNAME"],
+    password:             ENV["SENDGRID_PASSWORD"],
+    authentication:       'plain',
+    enable_starttls_auto: true 
+  }
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
